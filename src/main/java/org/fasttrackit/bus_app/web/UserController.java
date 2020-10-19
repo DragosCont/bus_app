@@ -3,8 +3,11 @@ package org.fasttrackit.bus_app.web;
 
 import org.fasttrackit.bus_app.domain.User;
 import org.fasttrackit.bus_app.service.UserService;
+import org.fasttrackit.bus_app.transfer.GetUsersRequest;
 import org.fasttrackit.bus_app.transfer.SaveUserRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +39,13 @@ public class UserController {
         User user = userService.getUser(id);
 
         return ResponseEntity.ok(user);
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<User>> getUsers(GetUsersRequest request,Pageable pageable) {
+        Page<User> users = userService.getUsers(request, pageable);
+
+        return ResponseEntity.ok(users);
     }
 
     @PutMapping("/{id}")
