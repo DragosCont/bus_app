@@ -1,6 +1,5 @@
 package org.fasttrackit.bus_app.service;
 
-import jdk.jfr.Frequency;
 import org.fasttrackit.bus_app.domain.User;
 import org.fasttrackit.bus_app.exception.ResourceNotFoundException;
 import org.fasttrackit.bus_app.persistence.UserRepository;
